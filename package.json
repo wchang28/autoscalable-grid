@@ -1,0 +1,21 @@
+{
+  "name": "autoscalable-grid",
+  "version": "0.0.1",
+  "description": "Autoscalable Grid Interfaces",
+  "main": "./js/index.js",
+  "typings": "./js/index.d.ts",
+  "scripts": {},
+  "keywords": [
+    "REST",
+    "API"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wchang28/autoscalable-grid"
+  },
+  "author": "Wen Chang",
+  "license": "MIT",
+  "dependencies": {
+    "@types/es6-promise": "0.0.32"
+  }
+}
