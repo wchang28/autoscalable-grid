@@ -15,6 +15,6 @@ export interface IAutoScalableState {
     WorkerStates: IWorkerState[];
 }
 
-export interface IAutoScalable {
+export interface IAutoScalableGrid {
     readonly CurrentState: Promise<IAutoScalableState>;
 }
