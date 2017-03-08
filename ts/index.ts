@@ -11,7 +11,7 @@ export interface IWorkerState extends WorkerIdentifier {
 export interface IAutoScalableState {
     CurrentTime: number;
     QueueEmpty: boolean;
-    CPUDebt: number;
+    CPUDebt: number;                // CPU shortage
     WorkerStates: IWorkerState[];
 }
 
