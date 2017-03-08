@@ -10,7 +10,7 @@ export interface IWorkerState extends WorkerIdentifier {
 export interface IAutoScalableState {
     CurrentTime: number;
     QueueEmpty: boolean;
-    TaskDebt: number;
+    CPUDebt: number;
     WorkerStates: IWorkerState[];
 }
 export interface IAutoScalableGrid {
