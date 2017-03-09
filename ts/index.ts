@@ -1,9 +1,11 @@
-export interface WorkerIdentifier {
+export interface IWorker {
     Id: string;
     Name: string;
+    RemoteAddress: string;
+    RemotePort: number;
 }
 
-export interface IWorkerState extends WorkerIdentifier {
+export interface IWorkerState extends IWorker {
     Busy: boolean;
     LastIdleTime: number;
 }
