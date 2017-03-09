@@ -14,5 +14,5 @@ export interface IAutoScalableState {
     WorkerStates: IWorkerState[];
 }
 export interface IAutoScalableGrid {
-    readonly CurrentState: Promise<IAutoScalableState>;
+    getCurrentState: () => Promise<IAutoScalableState>;
 }
