@@ -7,6 +7,8 @@ export interface IWorker {
 
 export interface IWorkerState extends IWorker {
     Busy: boolean;
+    Enabled: boolean;
+    Terminating: boolean;
     LastIdleTime: number;
 }
 
@@ -19,4 +21,6 @@ export interface IAutoScalableState {
 
 export interface IAutoScalableGrid {
     getCurrentState: () => Promise<IAutoScalableState>;
+    disableWorkers: (workersId: string[]) => Promise<any>;
+    setWorkersTerminating: (workersId: string[]) => Promise<any>;
 }
