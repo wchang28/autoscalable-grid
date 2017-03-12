@@ -2,7 +2,7 @@ export interface IWorker {
     Id: string;
     Name: string;
     RemoteAddress: string;
-    RemotePort: number;
+    RemotePort?: number;
 }
 
 export interface IWorkerState extends IWorker {
