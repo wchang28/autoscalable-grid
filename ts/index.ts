@@ -20,9 +20,10 @@ export interface IAutoScalableState {
 }
 
 export interface IAutoScalableGrid {
-    getCurrentState: () => Promise<IAutoScalableState>;
+    getWorkers: (workerIds: string[]) => Promise<IWorker[]>;
     disableWorkers: (workerIds: string[]) => Promise<any>;
     setWorkersTerminating: (workerIds: string[]) => Promise<any>;
+    getCurrentState: () => Promise<IAutoScalableState>;
 }
 
 export type WorkerKey = string; // worker key used to terminate/launch worker, actual implementation decide what this is
@@ -58,7 +59,7 @@ export interface IGridAutoScaler {
     enable: () => Promise<any>;
     disable: () => Promise<any>;
     hasMaxWorkersCap: () => Promise<boolean>;
-    hasMixWorkersCap: () => Promise<boolean>;
+    hasMinWorkersCap: () => Promise<boolean>;
     getMaxWorkersCap: () => Promise<number>;
     setMaxWorkersCap: (value: number) => Promise<number>;
     getMinWorkersCap: () => Promise<number>;
