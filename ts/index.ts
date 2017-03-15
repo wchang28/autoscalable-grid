@@ -53,11 +53,12 @@ export interface TerminatingWorker extends WorkerInstance {
 }
 
 export interface LaunchingWorker extends WorkerInstance {
-    LaunchTime: number;
+    LaunchingTime: number;  // worker launching time
 }
 
 export interface LaunchedWorker extends LaunchingWorker {
     Id: string; // worker id
+    LaunchedTime: number;  // worker launched time
 }
 
 export interface IGridAutoScalerJSON {
