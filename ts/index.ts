@@ -33,12 +33,23 @@ export interface IWorkersLaunchRequest {
     Hint?: any;
 }
 
+export type InstanceId = string;
+
+export interface WorkerInstance {
+    WorkerKey: WorkerKey;
+    InstanceId: InstanceId;
+}
+
 export interface IAutoScalerImplementation {
     TranslateToWorkerKeys: (workers: IWorker[]) => Promise<WorkerKey[]>;     // translate from IWorker to WorkerKey
     EstimateWorkersLaunchRequest: (state: IAutoScalableState) => Promise<IWorkersLaunchRequest>;  // calculate the number of additional workers desired given the current state of the autoscalable
-    LaunchInstances: (launchRequest: IWorkersLaunchRequest) => Promise<WorkerKey[]>;                // actual implementation of launching new workers
-    TerminateInstances: (workerKeys: WorkerKey[]) => Promise<WorkerKey[]>;                          // actual implementation of terminating the workers
+    LaunchInstances: (launchRequest: IWorkersLaunchRequest) => Promise<WorkerInstance[]>;                // actual implementation of launching new workers
+    TerminateInstances: (workerKeys: WorkerKey[]) => Promise<WorkerInstance[]>;                          // actual implementation of terminating the workers
     getConfigUrl:  () => Promise<string>;                                                           // configuration url for the actual implementation
+}
+
+export interface LaunchingWorker extends WorkerInstance {
+    LaunchTime: number;
 }
 
 export interface IGridAutoScalerJSON {
@@ -50,7 +61,8 @@ export interface IGridAutoScalerJSON {
     MinWorkersCap: number;
     TerminateWorkerAfterMinutesIdle: number;
     RampUpSpeedRatio: number;
-    LaunchingWorkers: WorkerKey[];
+    LaunchingTimeoutMinutes: number;
+    LaunchingWorkers: LaunchingWorker[];
 }
 
 export interface IGridAutoScaler {
