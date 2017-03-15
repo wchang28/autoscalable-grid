@@ -59,6 +59,7 @@ export interface LaunchingWorker extends WorkerInstance {
 export interface LaunchedWorker extends LaunchingWorker {
     Id: string; // worker id
     LaunchedTime: number;  // worker launched time
+    LaunchDurationMS: number;   // time to launch the worker in millisecond
 }
 
 export interface IGridAutoScalerJSON {

@@ -49,6 +49,7 @@ export interface LaunchingWorker extends WorkerInstance {
 export interface LaunchedWorker extends LaunchingWorker {
     Id: string;
     LaunchedTime: number;
+    LaunchDurationMS: number;
 }
 export interface IGridAutoScalerJSON {
     ScalingUp: boolean;
