@@ -40,8 +40,14 @@ export interface IAutoScalerImplementation {
     TerminateInstances: (workerKeys: WorkerKey[]) => Promise<WorkerInstance[]>;
     getConfigUrl: () => Promise<string>;
 }
+export interface TerminatingWorker extends WorkerInstance {
+    Id: string;
+}
 export interface LaunchingWorker extends WorkerInstance {
     LaunchTime: number;
+}
+export interface LaunchedWorker extends LaunchingWorker {
+    Id: string;
 }
 export interface IGridAutoScalerJSON {
     ScalingUp: boolean;
@@ -57,8 +63,8 @@ export interface IGridAutoScalerJSON {
 }
 export interface IGridAutoScaler {
     isScalingUp: () => Promise<boolean>;
-    launchNewWorkers: (launchRequest: IWorkersLaunchRequest) => Promise<boolean>;
-    terminateWorkers: (workers: IWorker[]) => Promise<boolean>;
+    launchNewWorkers: (launchRequest: IWorkersLaunchRequest) => Promise<LaunchingWorker[]>;
+    terminateWorkers: (workers: IWorker[]) => Promise<TerminatingWorker[]>;
     isEnabled: () => Promise<boolean>;
     enable: () => Promise<any>;
     disable: () => Promise<any>;

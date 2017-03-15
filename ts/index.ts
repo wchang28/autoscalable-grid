@@ -1,5 +1,5 @@
 export interface IWorker {
-    Id: string;
+    Id: string; // worker id
     Name: string;
     RemoteAddress: string;
     RemotePort?: number;
@@ -37,7 +37,7 @@ export type InstanceId = string;
 
 export interface WorkerInstance {
     WorkerKey: WorkerKey;
-    InstanceId: InstanceId;
+    InstanceId: InstanceId; // worker instance id (defined in the implementation)
 }
 
 export interface IAutoScalerImplementation {
@@ -48,8 +48,16 @@ export interface IAutoScalerImplementation {
     getConfigUrl:  () => Promise<string>;                                                           // configuration url for the actual implementation
 }
 
+export interface TerminatingWorker extends WorkerInstance {
+    Id: string; // worker id
+}
+
 export interface LaunchingWorker extends WorkerInstance {
     LaunchTime: number;
+}
+
+export interface LaunchedWorker extends LaunchingWorker {
+    Id: string; // worker id
 }
 
 export interface IGridAutoScalerJSON {
@@ -67,8 +75,8 @@ export interface IGridAutoScalerJSON {
 
 export interface IGridAutoScaler {
     isScalingUp: () => Promise<boolean>;
-    launchNewWorkers: (launchRequest: IWorkersLaunchRequest) => Promise<boolean>;
-    terminateWorkers: (workers: IWorker[]) => Promise<boolean>;
+    launchNewWorkers: (launchRequest: IWorkersLaunchRequest) => Promise<LaunchingWorker[]>;
+    terminateWorkers: (workers: IWorker[]) => Promise<TerminatingWorker[]>;
     isEnabled: () => Promise<boolean>;
     enable: () => Promise<any>;
     disable: () => Promise<any>;
