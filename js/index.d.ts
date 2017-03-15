@@ -68,11 +68,13 @@ export interface IGridAutoScaler {
     setMaxWorkersCap: (value: number) => Promise<number>;
     getMinWorkersCap: () => Promise<number>;
     setMinWorkersCap: (value: number) => Promise<number>;
+    getLaunchingTimeoutMinutes: () => Promise<number>;
+    setLaunchingTimeoutMinutes: (value: number) => Promise<number>;
     getTerminateWorkerAfterMinutesIdle: () => Promise<number>;
     setTerminateWorkerAfterMinutesIdle: (value: number) => Promise<number>;
     getRampUpSpeedRatio: () => Promise<number>;
     setRampUpSpeedRatio: (value: number) => Promise<number>;
-    getLaunchingWorkers: () => Promise<WorkerKey[]>;
+    getLaunchingWorkers: () => Promise<LaunchingWorker[]>;
     getJSON: () => Promise<IGridAutoScalerJSON>;
     getImplementationConfigUrl: () => Promise<string>;
 }
