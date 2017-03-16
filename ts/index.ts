@@ -49,7 +49,7 @@ export interface IAutoScalerImplementation {
     EstimateWorkersLaunchRequest: (state: IAutoScalableState) => Promise<IWorkersLaunchRequest>;  // calculate the number of additional workers desired given the current state of the autoscalable
     LaunchInstances: (launchRequest: IWorkersLaunchRequest) => Promise<WorkerInstance[]>;                // actual implementation of launching new workers
     TerminateInstances: (workerKeys: WorkerKey[]) => Promise<WorkerInstance[]>;                          // actual implementation of terminating the workers
-    getInfo:  () => Promise<AutoScalerImplementationInfo>;                                          // get the info for the actual implementation
+    getInfo: () => Promise<AutoScalerImplementationInfo>;                                          // get the info for the actual implementation
 }
 
 export interface TerminatingWorker extends WorkerInstance {
