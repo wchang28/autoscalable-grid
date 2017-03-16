@@ -40,12 +40,16 @@ export interface WorkerInstance {
     InstanceId: InstanceId; // worker instance id (defined in the implementation)
 }
 
+export interface AutoScalerImplementationInfo {
+    Name: string;   // a meaningful name for the implementation
+}
+
 export interface IAutoScalerImplementation {
     TranslateToWorkerKeys: (workers: IWorker[]) => Promise<WorkerKey[]>;     // translate from IWorker to WorkerKey
     EstimateWorkersLaunchRequest: (state: IAutoScalableState) => Promise<IWorkersLaunchRequest>;  // calculate the number of additional workers desired given the current state of the autoscalable
     LaunchInstances: (launchRequest: IWorkersLaunchRequest) => Promise<WorkerInstance[]>;                // actual implementation of launching new workers
     TerminateInstances: (workerKeys: WorkerKey[]) => Promise<WorkerInstance[]>;                          // actual implementation of terminating the workers
-    getConfigUrl:  () => Promise<string>;                                                           // configuration url for the actual implementation
+    getInfo:  () => Promise<AutoScalerImplementationInfo>;                                          // get the info for the actual implementation
 }
 
 export interface TerminatingWorker extends WorkerInstance {

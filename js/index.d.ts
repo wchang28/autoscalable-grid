@@ -33,12 +33,15 @@ export interface WorkerInstance {
     WorkerKey: WorkerKey;
     InstanceId: InstanceId;
 }
+export interface AutoScalerImplementationInfo {
+    Name: string;
+}
 export interface IAutoScalerImplementation {
     TranslateToWorkerKeys: (workers: IWorker[]) => Promise<WorkerKey[]>;
     EstimateWorkersLaunchRequest: (state: IAutoScalableState) => Promise<IWorkersLaunchRequest>;
     LaunchInstances: (launchRequest: IWorkersLaunchRequest) => Promise<WorkerInstance[]>;
     TerminateInstances: (workerKeys: WorkerKey[]) => Promise<WorkerInstance[]>;
-    getConfigUrl: () => Promise<string>;
+    getInfo: () => Promise<AutoScalerImplementationInfo>;
 }
 export interface TerminatingWorker extends WorkerInstance {
     Id: string;
