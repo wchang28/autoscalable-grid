@@ -87,5 +87,5 @@ export interface IGridAutoScaler {
     setRampUpSpeedRatio: (value: number) => Promise<number>;
     getLaunchingWorkers: () => Promise<LaunchingWorker[]>;
     getJSON: () => Promise<IGridAutoScalerJSON>;
-    getImplementationConfigUrl: () => Promise<string>;
+    getImplementationInfo: () => Promise<AutoScalerImplementationInfo>;
 }
