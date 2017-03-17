@@ -35,6 +35,7 @@ export interface WorkerInstance {
 }
 export interface AutoScalerImplementationInfo {
     Name: string;
+    HasSetupUI: boolean;
 }
 export interface IAutoScalerImplementation {
     TranslateToWorkerKeys: (workers: IWorker[]) => Promise<WorkerKey[]>;

@@ -42,6 +42,7 @@ export interface WorkerInstance {
 
 export interface AutoScalerImplementationInfo {
     Name: string;   // a meaningful name for the implementation
+    HasSetupUI: boolean;    // does the implementation has a setup UI
 }
 
 export interface IAutoScalerImplementation {
