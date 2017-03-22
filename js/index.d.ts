@@ -1,4 +1,3 @@
-/// <reference types="es6-promise" />
 export interface IWorker {
     Id: string;
     Name: string;
