@@ -18,7 +18,7 @@ export interface IAutoScalableState {
 }
 export interface IAutoScalableGrid {
     getWorkers: (workerIds: string[]) => Promise<IWorker[]>;
-    disableWorkers: (workerIds: string[]) => Promise<any>;
+    requestToTerminateWorkers: (workerIds: string[]) => Promise<string[]>;
     setWorkersTerminating: (workerIds: string[]) => Promise<any>;
     getCurrentState: () => Promise<IAutoScalableState>;
 }
