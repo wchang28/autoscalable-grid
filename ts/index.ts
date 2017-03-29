@@ -84,6 +84,7 @@ export interface IGridAutoScaler {
     isScalingUp: () => Promise<boolean>;
     launchNewWorkers: (launchRequest: IWorkersLaunchRequest) => Promise<LaunchingWorker[]>;
     terminateWorkers: (workers: IWorker[]) => Promise<TerminatingWorker[]>;
+    terminateLaunchingWorkers: (workerKeys: string[]) => Promise<LaunchingWorker[]>;
     isEnabled: () => Promise<boolean>;
     enable: () => Promise<any>;
     disable: () => Promise<any>;

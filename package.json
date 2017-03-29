@@ -6,8 +6,8 @@
   "typings": "./js/index.d.ts",
   "scripts": {},
   "keywords": [
-    "REST",
-    "API"
+    "Grid",
+    "Auto-Scaler"
   ],
   "repository": {
     "type": "git",
